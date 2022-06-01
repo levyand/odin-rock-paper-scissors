@@ -37,17 +37,22 @@ function playRound(playerSelection, computerSelection) {
   const messageKey = playerSelection > computerSelection ? 
     `${computerSelection}${playerSelection}` : 
     `${playerSelection}${computerSelection}`;
-    console.log(messageKey);
   const message = POSSIBLE_MESSAGES[messageKey];
 
   // Determine who won and return the result with an additional message
+  let result;
   if (playerSelection === computerSelection) {
-    return `Draw! ${message}`;
+    result = 'Draw!';
   } else if (((playerSelection + 1) % 3) === computerSelection) {
-    return `${RESULT_LOSE} ${message}`;
+    result = RESULT_LOSE;
   } else {
-    return `${RESULT_WIN} ${message}`;
+    result = RESULT_WIN;
   }
+
+  return {
+    result,
+    message
+  };
 }
 
 // Plays a game of 5 rounds
@@ -61,13 +66,13 @@ function game() {
     const player = playerPlay();
     const computer = computerPlay();
 
-    const results = playRound(player, computer);
+    const { result, message } = playRound(player, computer);
 
-    console.log(`Round ${i + 1}: ${results}`);
+    console.log(`Round ${i + 1}: ${result} ${message}`);
 
-    if (results.startsWith(RESULT_WIN)) {
+    if (result === RESULT_WIN) {
       score.player++;
-    } else if (results.startsWith(RESULT_LOSE)) {
+    } else if (result === RESULT_LOSE) {
       score.computer++;
     }
   }
