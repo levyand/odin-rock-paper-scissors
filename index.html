@@ -5,8 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
-  <script src="./script.js"></script>
+  <script src="./script.js" defer></script>
 </head>
 <body>
+  <h2 class="message">First to 5 wins.<br>Make a selection...</h2>
+  <div class="options">
+    <button class="option">Rock</button>
+    <button class="option">Paper</button>
+    <button class="option">Scissors</button>
+  </div>
+  <h2>Score</h2>
+  <div class="scoreboard">
+    <div id="player-score">
+      <h3>Player</h3>
+      <p>0</p>
+    </div>
+    <div id="computer-score">
+      <h3>Computer</h3>
+      <p>0</p>
+    </div>
+  </div>
+  <h2>Rounds</h2>
+  <ol class="rounds"></ol>
 </body>
 </html>
